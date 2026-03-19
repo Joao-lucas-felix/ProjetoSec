@@ -12,7 +12,7 @@ def index():
     return render_template("index.html")
 
 
-# ENDPOINT 1 (SEGURO)
+# ENDPOINT 1-SEGURO
 @app.route("/users")
 def list_users():
 
@@ -27,7 +27,7 @@ def list_users():
     return render_template("index.html", users=users)
 
 
-# ENDPOINT 2 (SEGURO)
+# ENDPOINT 2-SEGURO
 @app.route("/user")
 def get_user():
 
@@ -44,7 +44,7 @@ def get_user():
     return render_template("user.html", user=user)
 
 
-# ENDPOINT 3 (VULNERÁVEL)
+# ENDPOINT 3-VULNERÁVEL
 @app.route("/login", methods=["GET","POST"])
 def login():
 
@@ -76,7 +76,7 @@ def login():
 
     return render_template("login.html")
 
-# ENDPOINT 4 (VULNERÁVEL A MANIPULAÇÃO - executescript)
+# ENDPOINT 4-VULNERÁVEL A MANIPULAÇÃO-executescript
 @app.route("/esqueci_senha", methods=["GET", "POST"])
 def esqueci_senha():
 
@@ -88,7 +88,7 @@ def esqueci_senha():
         conn = get_db()
         cursor = conn.cursor()
 
-        # A consulta original apenas atualizaria a palavra-passe do utilizador solicitado
+        #a consulta original apenas atualizaria a palavra passe do usuario solicitado
         query = f"""
         UPDATE users 
         SET password = '{nova_senha}' 
@@ -98,9 +98,9 @@ def esqueci_senha():
         print("QUERY DE MANIPULAÇÃO:", query)
 
         try:
-            # Ao usar executescript, abrimos a porta para enviar múltiplos comandos separados por ';'
+            #ao usar executescript, é aberta a porta para enviar múltiplos comandos separados por ';'
             cursor.executescript(query)
-            conn.commit()  # Grava as alterações na base de dados
+            conn.commit()  #grava as alterações na base de dados
             conn.close()
             
             return "Operação concluída. Se o utilizador existir, a palavra-passe foi atualizada."
