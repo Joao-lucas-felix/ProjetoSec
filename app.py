@@ -76,6 +76,40 @@ def login():
 
     return render_template("login.html")
 
+# ENDPOINT 4 (VULNERÁVEL A MANIPULAÇÃO - executescript)
+@app.route("/esqueci_senha", methods=["GET", "POST"])
+def esqueci_senha():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        nova_senha = request.form["nova_senha"]
+
+        conn = get_db()
+        cursor = conn.cursor()
+
+        # A consulta original apenas atualizaria a palavra-passe do utilizador solicitado
+        query = f"""
+        UPDATE users 
+        SET password = '{nova_senha}' 
+        WHERE username = '{username}';
+        """
+
+        print("QUERY DE MANIPULAÇÃO:", query)
+
+        try:
+            # Ao usar executescript, abrimos a porta para enviar múltiplos comandos separados por ';'
+            cursor.executescript(query)
+            conn.commit()  # Grava as alterações na base de dados
+            conn.close()
+            
+            return "Operação concluída. Se o utilizador existir, a palavra-passe foi atualizada."
+        except Exception as e:
+            conn.close()
+            return f"Erro na execução: {e}"
+
+    return render_template("esqueci_senha.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
