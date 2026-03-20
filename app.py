@@ -103,7 +103,7 @@ def esqueci_senha():
             conn.commit()  #grava as alterações na base de dados
             conn.close()
             
-            return "Operação concluída. Se o utilizador existir, a palavra-passe foi atualizada."
+            return "Operação concluída. A senha foi atualizada."
         except Exception as e:
             conn.close()
             return f"Erro na execução: {e}"
