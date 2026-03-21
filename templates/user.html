@@ -2,17 +2,105 @@
 <html>
 <head>
 <title>User</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        margin: 0;
+        padding: 0;
+        color: #e2e8f0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 80px auto;
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #38bdf8;
+    }
+
+    p {
+        text-align: center;
+        color: #cbd5f5;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0ea5e9;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #38bdf8;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .alert {
+        background: #7f1d1d;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 15px;
+    }
+</style>
 </head>
 
 <body>
 
-<h2>Usuário</h2>
+<div class="container">
+
+<h2>Perfil do Usuário</h2>
 
 {% if user %}
-<p>{{user[0]}}</p>
+    <p><strong>{{user[0]}}</strong></p>
 {% else %}
-<p>Usuário não encontrado</p>
+    <div class="alert">Usuário não encontrado</div>
 {% endif %}
+
+<a href="/login">Voltar</a>
+
+</div>
 
 </body>
 </html>
