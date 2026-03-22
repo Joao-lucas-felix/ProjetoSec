@@ -1,24 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+<meta charset="UTF-8">
 <title>SQL Injection Demo</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        margin: 0;
+        padding: 0;
+        color: #e2e8f0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 80px auto;
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #38bdf8;
+    }
+
+    p {
+        text-align: center;
+        color: #cbd5f5;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0ea5e9;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #38bdf8;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .alert {
+        background: #7f1d1d;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 15px;
+    }
+</style>
+
 </head>
 
 <body>
 
-<h1>SQL Injection Demo</h1>
+<div class="container">
 
-<a href="/login">Login</a>
+    <h1>SQL Injection Demo</h1>
 
-<h2>Lista de usuários</h2>
+    <a href="/login">Ir para Login</a>
 
-{% if users %}
-<ul>
-{% for user in users %}
-<li>{{user[0]}} - {{user[1]}}</li>
-{% endfor %}
-</ul>
-{% endif %}
+    <h2>Lista de usuários</h2>
+
+    {% if users %}
+    <ul>
+        {% for user in users %}
+        <li>
+            {{user[0]}}
+            <span>{{user[1]}}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p class="empty">Nenhum usuário encontrado.</p>
+    {% endif %}
+
+</div>
 
 </body>
 </html>

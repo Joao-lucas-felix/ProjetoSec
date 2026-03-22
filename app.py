@@ -48,6 +48,11 @@ def get_user():
 @app.route("/login", methods=["GET","POST"])
 def login():
 
+    query = None
+    result = None
+    user = None
+    error = None
+
     if request.method == "POST":
 
         username = request.form["username"]
@@ -62,19 +67,27 @@ def login():
         AND password = '{password}'
         """
 
-        print("QUERY:", query)
+        try:
+            cursor.execute(query)
+            user = cursor.fetchone()
 
-        cursor.execute(query)
-        user = cursor.fetchone()
+            if user:
+                result = "LOGIN REALIZADO"
+            else:
+                result = "Login inválido"
+
+        except Exception as e:
+            error = str(e)
 
         conn.close()
 
-        if user:
-            return f"Bem-vindo {user[1]}"
-        else:
-            return "Login inválido"
-
-    return render_template("login.html")
+    return render_template(
+        "login.html",
+        query=query,
+        result=result,
+        user=user,
+        error=error
+    )
 
 # ENDPOINT 4-VULNERÁVEL A MANIPULAÇÃO-executescript
 @app.route("/esqueci_senha", methods=["GET", "POST"])

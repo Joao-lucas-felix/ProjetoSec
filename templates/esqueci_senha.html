@@ -2,29 +2,113 @@
 <html>
 <head>
 <title>Recuperar Palavra-passe</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        margin: 0;
+        padding: 0;
+        color: #e2e8f0;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: 80px auto;
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    h1, h2 {
+        text-align: center;
+        color: #38bdf8;
+    }
+
+    p {
+        text-align: center;
+        color: #cbd5f5;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #38bdf8;
+        color: #0f172a;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0ea5e9;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #38bdf8;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .alert {
+        background: #7f1d1d;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: 15px;
+    }
+</style>
 </head>
 
 <body>
 
-<h2>Esqueci a minha palavra-passe</h2>
-<p>Introduza o seu nome de utilizador para definir uma nova palavra-passe.</p>
+<div class="container">
+
+<h2>Recuperação de Senha</h2>
+
+<p>Introduza o seu utilizador para redefinir a senha</p>
 
 <form method="POST">
 
-<label>Username (Utilizador):</label>
+<label>Username</label>
 <input name="username">
-<br><br>
 
-<label>Nova Palavra-passe:</label>
-<input name="nova_senha">
-<br><br>
+<label>Nova Palavra-passe</label>
+<input name="nova_senha" type="password">
 
 <button type="submit">Atualizar</button>
 
 </form>
 
-<br>
 <a href="/login">Voltar ao Login</a>
+
+</div>
 
 </body>
 </html>
